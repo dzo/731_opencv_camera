@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
                 Vec3i(0, 0, 255), 2, 8);
         imshow("WebCam", frame);
         key = waitKey(1);
-        if (key == 113 || key == 27) return 0;  // either esc or 'q'
+        if (key == 113 || key == 27 || cv::getWindowProperty("WebCam", cv::WND_PROP_VISIBLE) < 1) {return 0; } // either esc or 'q' or close window
         system_clock::time_point end = system_clock::now();
         float mseconds = (end - start) / 1ms;
         fps = 1000.0f / mseconds;
